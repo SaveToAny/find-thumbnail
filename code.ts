@@ -1,4 +1,5 @@
 getCheck();
+
 async function getCheck() {
   let node = await figma.getFileThumbnailNodeAsync();
   //如果能在整个文件中找到这个封面节点。则进行下一步
@@ -16,11 +17,13 @@ async function getCheck() {
       await figma.setCurrentPageAsync(targetPage);
       //聚焦封面节点
       figma.viewport.scrollAndZoomIntoView([node]);
-    }else{
-      figma.notify("page未找到");
+      figma.notify("✅ Run successfully.");
+
+    } else {
+      figma.notify("Page not found.");
     }
   } else {
-    figma.notify("未找到节点");
+    figma.notify("🤣 The current file has not set a thumbnail.");
   }
 
   figma.closePlugin();
